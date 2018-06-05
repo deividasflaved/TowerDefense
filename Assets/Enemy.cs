@@ -5,12 +5,28 @@ public class Enemy : MonoBehaviour {
     public float speed = 1f; //Judėjimo greitis
     public Transform child;
 
+    public int health = 100;
+    public int bountyOnEnemy = 10;
+
     private Transform target; //Sekantis taškas kur judėt
     private int wavepointIndex = 0; //Sekančio taško index
 
     void Start()
     {
         target = Waypoints.points[0];//Pradžiai parenkam pirma tašką
+    }
+
+    public void TakeDamage(int dmgAmount)
+    {
+        health -= dmgAmount;
+        if (health <= 0)
+            Die();
+    }
+
+    void Die()
+    {
+        PlayerStats.Gold += bountyOnEnemy;
+        Destroy(gameObject);
     }
 
     void Update()
@@ -63,10 +79,16 @@ public class Enemy : MonoBehaviour {
     {
         if (wavepointIndex >= Waypoints.points.Length - 1)
         {
-            Destroy(gameObject);
+            EndPath();
             return;
         }
         wavepointIndex++;
         target = Waypoints.points[wavepointIndex];
+    }
+
+    void EndPath()
+    {
+        PlayerStats.Lives--;
+        Destroy(gameObject);
     }
 }

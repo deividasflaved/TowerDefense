@@ -29,12 +29,12 @@ public class Turret : MonoBehaviour {
         if (target == null)
             return;
 
-        Vector3 dir = target.position - transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(dir);
-        Vector3 rotation = Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * turnSpeed).eulerAngles;
-        transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.Euler(0, 0, rotation.x * -1.0f), turnSpeed * Time.deltaTime);
+        Vector3 vectorToTarget = target.position - transform.position;
+        float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
+        Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
+        transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
 
-        if(fireCountdown <= 0f)
+        if (fireCountdown <= 0f)
         {
             Shoot();
             fireCountdown = 1f / fireRate;

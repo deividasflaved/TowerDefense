@@ -292,10 +292,17 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\AudioManager.cs" />
+    <Compile Include="Assets\BuildManager.cs" />
     <Compile Include="Assets\Bullet.cs" />
     <Compile Include="Assets\CameraManager.cs" />
     <Compile Include="Assets\Enemy.cs" />
+    <Compile Include="Assets\GameManager.cs" />
+    <Compile Include="Assets\GameOver.cs" />
+    <Compile Include="Assets\GoldUI.cs" />
+    <Compile Include="Assets\LivesUI.cs" />
     <Compile Include="Assets\MainMenu.cs" />
+    <Compile Include="Assets\PlayerStats.cs" />
+    <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\Spot.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
@@ -331,6 +338,7 @@
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\VertexZoom.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\WarpTextExample.cs" />
     <Compile Include="Assets\Turret.cs" />
+    <Compile Include="Assets\TurretBlueprint.cs" />
     <Compile Include="Assets\WaveSpawner.cs" />
     <Compile Include="Assets\Waypoints.cs" />
   </ItemGroup>
