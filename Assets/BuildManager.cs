@@ -19,6 +19,8 @@ public class BuildManager : MonoBehaviour {
     public GameObject rocketTurretPrefab;
 
     private TurretBlueprint turretToBuild;
+    private Spot selectedNode;
+    public SpotUI nodeUI;
 
     public bool CanBuild { get { return turretToBuild != null; } }
     public bool EnoughGold { get { return PlayerStats.Gold >= turretToBuild.cost; } }
@@ -26,20 +28,34 @@ public class BuildManager : MonoBehaviour {
     public void SelectTurretToBuild(TurretBlueprint turret)
     {
         turretToBuild = turret;
+        selectedNode = null;
+
+        DeselectNode();
     }
-    public void BuildTurretOn(Spot node)
+
+    public void SelectNode(Spot node)
     {
-        if (PlayerStats.Gold < turretToBuild.cost) 
+        if (selectedNode == node) 
         {
-            Debug.Log("Not enough gold");
+            DeselectNode();
             return;
         }
 
-        PlayerStats.Gold -= turretToBuild.cost;
+        selectedNode = node;
+        turretToBuild = null;
 
-        GameObject turret = (GameObject)Instantiate(turretToBuild.prefab, node.GetBuildPosition(), Quaternion.identity);
-        node.turret = turret;
-
-        Debug.Log("Turret built! Gold left: " + PlayerStats.Gold);
+        nodeUI.SetTarget(node);
     }
+
+    public void DeselectNode()
+    {
+        selectedNode = null;
+        nodeUI.Hide();
+    }
+
+    public TurretBlueprint GetTurretToBuild()
+    {
+        return turretToBuild;
+    }
+
 }

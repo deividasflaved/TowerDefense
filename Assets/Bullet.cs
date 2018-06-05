@@ -35,17 +35,17 @@ public class Bullet : MonoBehaviour {
 	}
     void HitTarget()
     {
-        if (explosionRadius > 0f)
-        {
-            Explode();
-        }
-        else
-        {
+       // if (explosionRadius > 0f)
+        //{
+         //   Explode();
+        //}
+       // else
+        //{
             Damage(target);
-        }
+       // }
         Destroy(gameObject);
     }
-    void Explode()
+    /*void Explode()
     {
         Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
         foreach (Collider collider in colliders)
@@ -55,7 +55,7 @@ public class Bullet : MonoBehaviour {
                 Damage(collider.transform);
             }
         }
-    }
+    }*/
 
     void Damage(Transform enemy)
     {

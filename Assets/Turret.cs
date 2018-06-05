@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class Turret : MonoBehaviour {
 
@@ -9,6 +10,7 @@ public class Turret : MonoBehaviour {
     public float range = 2f;
     public float fireRate = 1f;
     private float fireCountdown = 0f;
+    public int lvl = 1;
 
     [Header("Unity Setup Fields")]
 
@@ -17,6 +19,8 @@ public class Turret : MonoBehaviour {
 
     public GameObject bulletPrefab;
     public Transform firePoint;
+    public GameObject lvlUi;
+    public TextMeshProUGUI lvlText;
 
 
 	void Start ()
@@ -33,6 +37,9 @@ public class Turret : MonoBehaviour {
         float angle = Mathf.Atan2(vectorToTarget.y, vectorToTarget.x) * Mathf.Rad2Deg;
         Quaternion q = Quaternion.AngleAxis(angle, Vector3.forward);
         transform.rotation = Quaternion.Slerp(transform.rotation, q, Time.deltaTime * turnSpeed);
+
+        lvlUi.transform.rotation = Quaternion.Euler(0.0f, 0.0f, transform.rotation.z * -1.0f);
+
 
         if (fireCountdown <= 0f)
         {

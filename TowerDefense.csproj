@@ -304,6 +304,7 @@
     <Compile Include="Assets\PlayerStats.cs" />
     <Compile Include="Assets\Shop.cs" />
     <Compile Include="Assets\Spot.cs" />
+    <Compile Include="Assets\SpotUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark01_UGUI.cs" />
     <Compile Include="Assets\TextMesh Pro\Examples &amp; Extras\Scripts\Benchmark02.cs" />
